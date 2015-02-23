@@ -42,7 +42,7 @@ class Info_SitemapController extends Pas_Controller_Action_Admin
      */
     public function indexAction()
     {
-        $config = new Zend_Config_Xml('http://finds.org.uk/info/sitemap/configuration/', 'nav');
+        $config = new Zend_Config_Xml('http://finds.dev/sitemap/configurations/database', 'nav');
         $navigation = new Zend_Navigation($config);
         $this->view->navigation($navigation);
         $this->view->navigation()
@@ -56,11 +56,10 @@ class Info_SitemapController extends Pas_Controller_Action_Admin
      */
     public function locationsAction()
     {
-        $config = new Zend_Config_Xml('http://finds.org.uk/info/sitemap/databaseconfig', 'locations');
+        $config = new Zend_Config_Xml('http://finds.dev/sitemap/configurations', 'locations');
         $navigation = new Zend_Navigation($config);
         $this->view->navigation($navigation);
-        $this->view->navigation()->sitemap()
-            ->setFormatOutput(true); // default is false
+        $this->view->navigation()->sitemap()->setFormatOutput(true); // default is false
     }
 
     /** The image locations xml file
@@ -69,7 +68,7 @@ class Info_SitemapController extends Pas_Controller_Action_Admin
      */
     public function imagelocationsAction()
     {
-        $config = new Zend_Config_Xml('http://finds.org.uk/info/sitemap/imageconfig', 'locations');
+        $config = new Zend_Config_Xml('http://finds.dev/sitemap/configurations', 'locations');
         $navigation = new Zend_Navigation($config);
         $this->view->navigation($navigation);
         $this->view->navigation()
@@ -83,7 +82,7 @@ class Info_SitemapController extends Pas_Controller_Action_Admin
      */
     public function booklocationsAction()
     {
-        $config = new Zend_Config_Xml('http://finds.org.uk/info/sitemap/bookconfig', 'locations');
+        $config = new Zend_Config_Xml('http://finds.dev/sitemap/configurations', 'locations');
         $navigation = new Zend_Navigation($config);
         $this->view->navigation($navigation);
         $this->view->navigation()

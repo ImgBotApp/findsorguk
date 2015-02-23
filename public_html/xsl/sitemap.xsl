@@ -12,7 +12,7 @@
 				<meta name="robots" content="noindex,follow" />
 				<style type="text/css">
 					body {
-						font-family:"Lucida Grande","Lucida Sans Unicode",Tahoma,Verdana;
+						font-family:"Arial";
 						font-size:13px;
 					}
 					
@@ -24,20 +24,20 @@
 					}
 					
 					#intro p {
-						line-height:	16.8667px;
+						line-height: 16.8667px;
 					}
 					#intro strong {
 						font-weight:normal;
 					}
 					
 					td {
-						font-size:11px;
+						font-size:13px;
 					}
 					
 					th {
 						text-align:left;
 						padding-right:30px;
-						font-size:11px;
+						font-size:13px;
 					}
 					
 					tr.high {
@@ -47,7 +47,7 @@
 					#footer {
 						padding:2px;
 						margin-top:10px;
-						font-size:8pt;
+						font-size:13px;
 						color:gray;
 					}
 					

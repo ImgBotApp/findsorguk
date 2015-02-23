@@ -274,6 +274,10 @@ class ErrorController extends Pas_Controller_Action_Admin
                             $this->view->message = 'Rendering of view error.';
                             $this->sendEmail();
                             break;
+                        default:
+                            $this->getResponse()->setHttpResponseCode(500);
+                            $this->view->code = 500;
+                            $this->view->message = $errors->exception->getMessage();
                     }
 
             }

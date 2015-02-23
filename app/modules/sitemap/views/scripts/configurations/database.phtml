@@ -1,0 +1,30 @@
+<?php
+$dom = new DomDocument("1.0", "UTF-8");
+$sitemap = $dom->createElement('configdata');
+$nav = $dom->createElement('locations');
+$elements = $dom->createElement('database');
+$sitemap->appendChild($nav);
+$elements->appendChild($dom->createElement('label', 'Database output'));
+$elements->appendChild($dom->createElement('uri', $this->serverUrl() . '/sitemap/database/'));
+$nav->appendChild($elements);
+$pages = $dom->createElement('pages');
+$search = new Pas_Solr_Handler();
+$search->setCore('objects');
+$params['start'] = 0;
+$params['show'] = 1000;
+$params['format'] = 'sitemap';
+$search->setParams($params);
+$search->execute();
+$paginate = $search->createPagination();
+$a = ceil($paginate->getTotalItemCount() / $paginate->getItemCountPerPage());
+for ($i = 1; $i <= $a; $i++) {
+    $data = $dom->createElement('page-' . $i);
+    $data->appendChild($dom->createElement('label', 'Database records page ' . $i));
+    $data->appendChild($dom->createElement('uri', $this->serverUrl() . '/sitemap/database/page/' . $i));
+    $pages->appendChild($data);
+}
+$elements->appendChild($pages);
+$dom->appendChild($sitemap);
+
+$xmlData = $dom->saveXML();
+echo $xmlData;

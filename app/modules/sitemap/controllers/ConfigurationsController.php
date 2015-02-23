@@ -11,7 +11,7 @@
  * @license http://www.gnu.org/licenses/agpl-3.0.txt GNU Affero GPL v3.0
  * @uses Content
  */
-class Sitemap_IndexController extends Pas_Controller_Action_Admin
+class Sitemap_ConfigurationsController extends Pas_Controller_Action_Admin
 {
 
     /** The init function
@@ -21,8 +21,8 @@ class Sitemap_IndexController extends Pas_Controller_Action_Admin
     public function init()
     {
         $this->_helper->acl->allow(null);
-//        $this->_helper->layout->disableLayout();
-//        $this->getResponse()->setHeader('Content-type', 'application/xml');
+        $this->_helper->layout->disableLayout();
+        $this->getResponse()->setHeader('Content-type', 'application/xml');
     }
 
     /** The index action
@@ -31,11 +31,22 @@ class Sitemap_IndexController extends Pas_Controller_Action_Admin
      */
     public function indexAction()
     {
-        $config = new Zend_Config_Xml('http://finds.dev/info/sitemap/booklocations/', 'nav');
-        Zend_Debug::dump($config);
-        exit;
-        $navigation = new Zend_Navigation($config);
-        $this->view->navigation($navigation);
-        $this->view->navigation()->sitemap()->setFormatOutput(true);
+        //XML in view
     }
+
+    public function databaseAction()
+    {
+        // XML in view
+    }
+
+    public function imagesAction()
+    {
+        //XML in view
+    }
+
+    public function contentAction()
+    {
+    }
+
+
 }
