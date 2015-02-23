@@ -31,9 +31,7 @@ class Sitemap_IndexController extends Pas_Controller_Action_Admin
      */
     public function indexAction()
     {
-        $config = new Zend_Config_Xml('http://finds.dev/info/sitemap/booklocations/', 'nav');
-        Zend_Debug::dump($config);
-        exit;
+        $config = new Zend_Config_Xml('/sitemap/booklocations/', 'nav');
         $navigation = new Zend_Navigation($config);
         $this->view->navigation($navigation);
         $this->view->navigation()->sitemap()->setFormatOutput(true);
