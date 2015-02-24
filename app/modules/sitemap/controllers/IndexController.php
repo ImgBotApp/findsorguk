@@ -31,10 +31,11 @@ class Sitemap_IndexController extends Pas_Controller_Action_Admin
      */
     public function indexAction()
     {
-        $config = new Zend_Config_Xml($this->view->serverUrl() . '/sitemap/configurations/database/', 'configdata');
-        Zend_Debug::dump($config);
-//        $navigation = new Zend_Navigation($config);
-//        $this->view->navigation($navigation);
-//        $this->view->navigation()->sitemap()->setFormatOutput(true);
+        $file = file_get_contents('http://finds.dev/sitemap/configurations/database');
+
+        $config = new Zend_Config_Xml( $file, 'configdata');
+        $navigation = new Zend_Navigation($config);
+        $this->view->navigation($navigation);
+        $this->view->navigation()->sitemap()->setFormatOutput(true);
     }
 }
