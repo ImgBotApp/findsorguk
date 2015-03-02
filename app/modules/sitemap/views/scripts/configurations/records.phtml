@@ -12,18 +12,20 @@ $news->appendChild($dom->createElement('priority', '0.9'));
 $nav->appendChild($news);
 $pages = $dom->createElement('pages');
 $search = new Pas_Solr_Handler();
-$search->setCore('publications');
+$search->setCore('objects');
 $page = Zend_Controller_Front::getInstance()->getRequest()->getParam('page');
+
 $params['page'] = $page;
 $params['sort'] = 'created';
 $params['direction'] = 'asc';
 $params['show'] = 1000;
+$params['format'] = 'sitemap';
 $search->setParams($params);
 $results = $search->execute();
 foreach ($results as $result) {
-    $story = $dom->createElement('book' . $result['id']);
-    $story->appendChild($dom->createElement('label', htmlspecialchars($result['title'], ENT_QUOTES, 'UTF-8')));
-    $story->appendChild($dom->createElement('uri', $this->serverUrl() . '/database/publications/publication/id/' . $result['id']));
+    $story = $dom->createElement('record' . $result['id']);
+    $story->appendChild($dom->createElement('label', $result['old_findID']));
+    $story->appendChild($dom->createElement('uri', $this->serverUrl() . '/database/artefacts/record/id/' . $result['id']));
     $story->appendChild($dom->createElement('changefreq', 'weekly'));
     $story->appendChild($dom->createElement('priority', '0.2'));
     $story->appendChild($dom->createElement('lastmod', $result['updated']));

@@ -45,7 +45,7 @@ class Pas_Controller_Plugin_ModuleLayout extends Zend_Controller_Plugin_Abstract
     /** Set up contexts to disable layout for based on modules
      * @var array $_disabled
      */
-    protected $_disabled = array('ajax', 'oai');
+    protected $_disabled = array('ajax', 'oai', 'sitemap');
 
     /** Create the layout after the request has been dispatched
      *  Disable or enable layouts depending on type.
@@ -55,7 +55,6 @@ class Pas_Controller_Plugin_ModuleLayout extends Zend_Controller_Plugin_Abstract
     public function postDispatch(Zend_Controller_Request_Abstract $request)
     {
         $controller = $request->getControllerName();
-
         $contextSwitch = Zend_Controller_Action_HelperBroker::getStaticHelper('ContextSwitch');
         $view = Zend_Controller_Action_HelperBroker::getExistingHelper('ViewRenderer')->view;
         if ($request->getModuleName() != 'sitemap'
@@ -95,9 +94,7 @@ class Pas_Controller_Plugin_ModuleLayout extends Zend_Controller_Plugin_Abstract
         $response->insert('searchForm', $view->render('structure/searchForm.phtml'));
         $response->insert('tags', $view->render('structure/tag.phtml'));
         if ($module != 'default') {
-            $layout = $menus[$module]['layout'];
-            $response->insert('sidebar', $view->render($this->getBasePath() . $menus[$module]['menu'] . 'Sidebar.phtml')
-            );
+            $response->insert('sidebar', $view->render($this->getBasePath() . $menus[$module]['menu'] . 'Sidebar.phtml'));
         }
     }
 

@@ -1,6 +1,6 @@
 <?php
-$this->navigation()->sitemap()->setFormatOutput(true);
-$doc = new DOMDocument(); 
+$this->navigation()->sitemapIndex()->setFormatOutput(true);
+$doc = new DOMDocument();
 $doc->loadXML($this->navigation()->sitemap());
 $xslt = $doc->createProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="' . $this->serverUrl() . '/xsl/sitemap.xsl"');
 $urlset = $doc->getElementsByTagName('urlset');

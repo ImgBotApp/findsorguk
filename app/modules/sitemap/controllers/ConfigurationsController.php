@@ -39,6 +39,10 @@ class Sitemap_ConfigurationsController extends Pas_Controller_Action_Admin
         // XML in view
     }
 
+    public function recordsAction()
+    {
+
+    }
     public function imagesAction()
     {
         //XML in view
@@ -46,7 +50,22 @@ class Sitemap_ConfigurationsController extends Pas_Controller_Action_Admin
 
     public function contentAction()
     {
+        //XML in view
     }
 
+    public function datalabsAction()
+    {
+        //XML in view
+    }
+
+    public function publicationsAction()
+    {
+
+    }
+
+    public function booksAction()
+    {
+
+    }
 
 }

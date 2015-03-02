@@ -2,12 +2,9 @@
 $site = $this->serverUrl();
 $dom = new DomDocument("1.0", "UTF-8");
 $sitemap = $dom->createElement('configdata');
-//1st item
 $nav = $dom->createElement('locations');
-# News section
 $news = $dom->createElement('database');
 $sitemap->appendChild($nav);
-$news->appendChild($dom->createElement('label', 'Database output'));
 $news->appendChild($dom->createElement('uri', $this->serverUrl() . '/database/sitemap/images/'));
 $nav->appendChild($news);
 $pages = $dom->createElement('pages');
