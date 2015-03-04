@@ -31,6 +31,9 @@ if(!is_dir(IMAGE_PATH)){
     mkdir(IMAGE_PATH, 0775);
 }
 
+// Set up sitemaps path
+define('SITEMAP_PATH', realpath(dirname(__FILE__)) . '/sitemaps/');
+
 // Set up assets constant for path
 defined('ASSETS_PATH') || define('ASSETS_PATH', realpath(dirname(__FILE__) . '/assets/'));
 

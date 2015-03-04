@@ -77,11 +77,15 @@ class Database_SitemapController extends Pas_Controller_Action_Admin
 
     public function checkXml($url, $filename)
     {
-        $key = md5($url);
-        $name = APPLICATION_PATH . '/config/sitemaps/' . $filename;
-        if(!$this->getCache()->test($key)) {
+        $key = md5($filename);
+        if(!is_dir(SITEMAP_PATH)){
+            mkdir(SITEMAP_PATH, 0777);
+        }
+        $name = SITEMAP_PATH . $filename;
+        if(!$this->getCache()->test($key) || !file_exists($name)) {
             $file = file_get_contents($url);
             file_put_contents($name, $file);
+            $this->getCache()->save($file);
         }
         return $name;
     }
