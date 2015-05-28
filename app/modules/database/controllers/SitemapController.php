@@ -2,7 +2,7 @@
 /** Controller for displaying site maps
  *
  * @author Daniel Pett <dpett at britishmuseum.org>
- * @category   Pas
+ * @category Pas
  * @package Pas_Controller_Action
  * @subpackage Admin
  * @copyright  Copyright (c) 2011 DEJ Pett dpett @ britishmuseum . org
@@ -38,11 +38,20 @@ class Database_SitemapController extends Pas_Controller_Action_Admin
         $this->view->navigation($navigation);
     }
 
+
+    /** Database action
+     * @access public
+     * @return void
+     */
     public function databaseAction()
     {
 
     }
 
+    /** Database records
+     * @access public
+     * @return void
+     */
     public function recordsAction()
     {
         $xml = $this->checkXml($this->view->serverUrl() . '/sitemap/configurations/records/page/' . $this->getParam('page'), 'records' . $this->getParam('page') .  '.xml');
@@ -51,6 +60,10 @@ class Database_SitemapController extends Pas_Controller_Action_Admin
         $this->view->navigation($navigation);
     }
 
+    /** Publications sitemap generation
+     * @access public
+     * @return void
+     */
     public function publicationsAction()
     {
         $xml = $this->checkXml($this->view->serverUrl() . '/sitemap/configurations/publications', 'publications.xml');
@@ -59,6 +72,10 @@ class Database_SitemapController extends Pas_Controller_Action_Admin
         $this->view->navigation($navigation);
     }
 
+    /** The rallies site map file
+     * @access public
+     * @return void
+     */
     public function ralliesAction()
     {
         $xml = $this->checkXml($this->view->serverUrl() . '/sitemap/configurations/rallies', 'rallies.xml');
@@ -67,6 +84,10 @@ class Database_SitemapController extends Pas_Controller_Action_Admin
         $this->view->navigation($navigation);
     }
 
+    /** The images sitemap
+     * @access public
+     * @return void
+     */
     public function imagesAction()
     {
         $xml = $this->checkXml($this->view->serverUrl() . '/sitemap/configurations/images', 'images.xml');
@@ -75,6 +96,10 @@ class Database_SitemapController extends Pas_Controller_Action_Admin
         $this->view->navigation($navigation);
     }
 
+    /** Check function to make sure site map xml file exists and for caching file output
+     * @access public
+     * @return void
+     */
     public function checkXml($url, $filename)
     {
         $key = md5($filename);
