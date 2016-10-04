@@ -10,7 +10,6 @@
  * @author Daniel Pett <dpett at britishmuseum.org>
  * @version 1
  * @todo move code to models
- * @uses Pas_Service_Geo_Geoplanet
  * @uses Pas_Service_Geo_Coder
  * @uses Contacts
  * @uses ContactForm
@@ -37,21 +36,6 @@ class Admin_ContactsController extends Pas_Controller_Action_Admin
 
     const RESIZED = 'resized/';
 
-    /** The geoplanet class
-     * @access protected
-     * @var \Pas_Service_Geo_Geoplanet
-     */
-    protected $_geoPlanet;
-
-    /** Get the geo planet class
-     * @access public
-     * @return \Pas_Service_Geo_Geoplanet
-     */
-    public function getGeoPlanet()
-    {
-        $this->_geoPlanet = new Pas_Service_Geo_GeoPlanet($this->_helper->config()->webservice->ydnkeys->appid);
-        return $this->_geoPlanet;
-    }
 
     /** Get the geocoder function
      * @access public
@@ -156,8 +140,7 @@ class Admin_ContactsController extends Pas_Controller_Action_Admin
                 if ($coords) {
                     $lat = $coords['lat'];
                     $lon = $coords['lon'];
-                    $place = $this->getGeoPlanet()->reverseGeoCode($lat, $lon);
-                    $woeid = $place['woeid'];
+                    $woeid = NULL;
                 } else {
                     $lat = null;
                     $lon = null;
@@ -195,8 +178,7 @@ class Admin_ContactsController extends Pas_Controller_Action_Admin
                 if ($coords) {
                     $lat = $coords['lat'];
                     $lon = $coords['lon'];
-                    $place = $this->getGeoPlanet()->reverseGeoCode($lat, $lon);
-                    $woeid = $place['woeid'];
+                    $woeid = NULL;
                 } else {
                     $lat = null;
                     $lon = null;

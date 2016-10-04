@@ -11,10 +11,6 @@ if ($this->f_code == 'R') {
 } else {
     $code = 'Not provided';
 }
-$config = Zend_Registry::get('config');
-$place = new Pas_Service_Geo_GeoPlanet($config->webservice->ydnkeys->placemakerkey);
-$placedata = $place->reverseGeoCode($this->latitude, $this->longitude);
-
 ?>
 <h2 class="lead">1:50K Gazetteer data for <?php echo $this->name; ?></h2>
 <img
@@ -27,15 +23,4 @@ $placedata = $place->reverseGeoCode($this->latitude, $this->longitude);
     <li>Latitude: <?php echo $this->latitude; ?></li>
     <li>Longitude: <?php echo $this->longitude; ?></li>
     <li>Feature type: <?php echo $code; ?></li>
-    <?php if (!empty($placedata)): ?>
-        <li>Where on earth ID: <?php echo $placedata['woeid']; ?></li>
-        <li>Place name: <?php echo $placedata['line1']; ?></li>
-        <li>District: <?php echo $placedata['line2']; ?></li>
-        <li>County: <?php echo $this->full_county; ?></li>
-        <li>Country: <?php echo $placedata['country']; ?></li>
-        <?php if (isset($point['postal'])): ?>
-            <li>Postcode: <?php echo $placedata['postal']; ?></li>
-        <?php endif; ?>
-    <?php endif; ?>
 </ul>
-

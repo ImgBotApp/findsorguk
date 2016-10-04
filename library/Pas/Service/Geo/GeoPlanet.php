@@ -21,6 +21,9 @@
  * @uses          Pas_Yql_Oauth
  * @uses          Pas_Geo_Parser
  * @example /app/models/Coroners.php
+ *
+ * As of the 30th September, this class will no longer work due to the deprecation of GeoPlanet.
+ * Yahoo are fools.
  */
 class Pas_Service_Geo_GeoPlanet
 {

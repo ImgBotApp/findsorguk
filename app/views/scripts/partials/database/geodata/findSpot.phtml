@@ -299,13 +299,7 @@ echo $this->findSpotEditDeleteLink()->setController($controller)
 
     <div class="row-fluid">
 
-        <div class="span4 noprint">
-            <?php echo $this->findspotGeo()->setWoeID($this->woeid)->setLat($this->lat)->setLon($this->lon); ?>
-        </div>
 
-        <div class="span4 noprint">
-            <?php echo $this->yahooGeoAdjacent()->setWoeid($this->woeid); ?>
-        </div>
         <?php
         $discovery = array($this->discmethod, $this->disccircum, $this->curr_loc, $this->landvalue, $this->landuse);
         if (array_filter($discovery)):

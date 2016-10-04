@@ -1,5 +1,6 @@
 <?php
-/** A view helper for creating findspot data when geo data is known
+/**
+ * A view helper for creating findspot data when geo data is known
  * @version 1
  * @author Daniel Pett
  * @license http://www.gnu.org/licenses/agpl-3.0.txt GNU Affero GPL v3.0
@@ -8,11 +9,12 @@
  * @package View
  * @subpackage Helper
  * @subpackage Abstract
- * @uses Pas_Service_Geo_Geoplanet
  * @uses Pas_View_Helper_YahooGeoAdjacent
  * @uses Zend_Auth
  * @uses Pas_Service_Geo_Geoplanet
  * @uses Zend_Cache
+ *
+ * Much of this function will be deprecated by the Yahoo EOL notice on Geoplanet
  */
 class Pas_View_Helper_FindspotGeo extends Zend_View_Helper_Abstract {
 
